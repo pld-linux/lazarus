@@ -24,9 +24,9 @@ Lazarus Component Library (LCL), which is also included in this
 package.
 
 %description -l pl
-Lazarus to darmowe i opensourcowe narzêdzie RAD dla freepascala
+Lazarus to darmowe i opensourcowe narzêdzie RAD dla freepascala,
 u¿ywaj±ce biblioteki komponentów LCL (Lazarus Component Library),
-która jest tak¿e zawarte w tym pakiecie.
+która jest tak¿e zawarta w tym pakiecie.
 
 %prep
 %setup -q -n %{name}
