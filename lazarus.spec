@@ -52,8 +52,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc docs/* README
-%{_examplesdir}/%{name}-%{_snap}/*
 %attr(755,root,root) %{_bindir}/lazarus
 %{_datadir}/lazarus
 %{_pixmapsdir}/lazarus.png
 %{_desktopdir}/lazarus.desktop
+%{_examplesdir}/%{name}-%{_snap}
