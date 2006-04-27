@@ -2,12 +2,13 @@ Summary:	Lazarus Component Library and IDE
 Summary(pl):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	0.9.14
-Release:	0.1
+Release:	0.2
 License:	GPL and modified LGPL
 Group:		Development/Tools
 Source0:        http://dl.sourceforge.net/lazarus/%{name}-%{version}-1.tar.gz 
 # Source0-md5:	7ee733185e5f0dc10f6c7084e1505c60
 URL:		http://www.lazarus.freepascal.org/
+Patch0:		%{name}-desktop.patch
 BuildRequires:	fpc >= 2.0.2
 BuildRequires:	gtk+-devel
 BuildRequires:	gdk-pixbuf-devel
@@ -30,6 +31,7 @@ która jest tak¿e zawarta w tym pakiecie.
 
 %prep
 %setup -q -n %{name}
+%patch0 -p1
 
 %build
 
@@ -39,15 +41,20 @@ strip startlazarus
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_datadir}/lazarus,%{_pixmapsdir},%{_desktopdir},%{_bindir}} \
+install -d $RPM_BUILD_ROOT{%{_datadir}/lazarus/docs,%{_pixmapsdir},%{_desktopdir},%{_bindir}} \
         $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
-for i in components docs doceditor ide lcl units converter debugger ideintf languages localize.bat startlazarus \
+for i in components doceditor ide lcl units converter debugger ideintf languages localize.bat startlazarus \
 designer images lazarus localize.sh packager tools ; do
 cp -a $i $RPM_BUILD_ROOT%{_datadir}/lazarus
 done
+
+cp -a docs/*.html $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
+cp -a docs/html $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
+cp -a docs/images $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
+cp -a docs/xml $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
 
 install images/ide_icon48x48.png $RPM_BUILD_ROOT%{_pixmapsdir}/lazarus.png
 install install/lazarus.desktop $RPM_BUILD_ROOT%{_desktopdir}/lazarus.desktop
@@ -59,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/* README
+%doc docs/*.txt docs/*.pdf README
 %attr(755,root,root) %{_bindir}/lazarus
 %attr(755,root,root) %{_bindir}/startlazarus
 %{_datadir}/lazarus
