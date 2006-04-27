@@ -1,0 +1,18 @@
+--- lazarus/install/lazarus.desktop2	2006-03-29 21:08:03.000000000 +0200
++++ lazarus/install/lazarus.desktop	2006-04-26 21:21:54.000000000 +0200
+@@ -30,11 +30,11 @@
+ Name[zh_CN]=Lazarus
+ Comment=Lazarus IDE
+ Exec=startlazarus %f
+-Terminal=0
++Terminal=false
+ Type=Application
+ Icon=lazarus.png
+-Encoding=UTF-8
+-Categories=IDE;Development;X-Red-Hat-Base;Application;
++Categories=Development;IDE;
+ StartupWMClass=Lazarus
+ MimeType=text/x-pascal;
+-
++Encoding=UTF-8
++# vi: encoding=utf-8
