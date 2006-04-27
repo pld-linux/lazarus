@@ -1,3 +1,4 @@
+# TODO: optflags (where possible)
 Summary:	Lazarus Component Library and IDE
 Summary(pl):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
@@ -9,6 +10,8 @@ Source0:        http://dl.sourceforge.net/lazarus/%{name}-%{version}-1.tar.gz
 # Source0-md5:	7ee733185e5f0dc10f6c7084e1505c60
 URL:		http://www.lazarus.freepascal.org/
 Patch0:		%{name}-desktop.patch
+# heavily broken: binaries in datadir
+BuildRequires:	FHS-fix
 BuildRequires:	fpc >= 2.0.2
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gtk+-devel
