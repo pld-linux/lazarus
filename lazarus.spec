@@ -10,9 +10,8 @@ Source0:        http://dl.sourceforge.net/lazarus/%{name}-%{version}-1.tar.gz
 URL:		http://www.lazarus.freepascal.org/
 Patch0:		%{name}-desktop.patch
 BuildRequires:	fpc >= 2.0.2
-BuildRequires:	gtk+-devel
 BuildRequires:	gdk-pixbuf-devel
-BuildRequires:	glibc-devel
+BuildRequires:	gtk+-devel
 Requires:	fpc-src >= 2.0.2
 Requires:	gdk-pixbuf >= 0.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,17 +33,14 @@ która jest tak¿e zawarta w tym pakiecie.
 %patch0 -p1
 
 %build
-
 %{__make}
-strip lazarus
-strip startlazarus
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/lazarus/docs,%{_pixmapsdir},%{_desktopdir},%{_bindir}} \
-        $RPM_BUILD_ROOT%{_examplesdir}/%{name}
+        $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 for i in components doceditor ide lcl units converter debugger ideintf languages localize.bat startlazarus \
 designer images lazarus localize.sh packager tools ; do
