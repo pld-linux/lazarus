@@ -6,7 +6,7 @@ Version:	0.9.14
 Release:	0.2
 License:	GPL and modified LGPL
 Group:		Development/Tools
-Source0:        http://dl.sourceforge.net/lazarus/%{name}-%{version}-1.tar.gz 
+Source0:	http://dl.sourceforge.net/lazarus/%{name}-%{version}-1.tar.gz
 # Source0-md5:	7ee733185e5f0dc10f6c7084e1505c60
 URL:		http://www.lazarus.freepascal.org/
 Patch0:		%{name}-desktop.patch
@@ -41,9 +41,9 @@ która jest tak¿e zawarta w tym pakiecie.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/lazarus/docs,%{_pixmapsdir},%{_desktopdir},%{_bindir}} \
-        $RPM_BUILD_ROOT%{_examplesdir}/%{name}
+	$RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 for i in components doceditor ide lcl units converter debugger ideintf languages localize.bat startlazarus \
 designer images lazarus localize.sh packager tools ; do
@@ -73,4 +73,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_datadir}/lazarus/startlazarus
 %{_pixmapsdir}/lazarus.png
 %{_desktopdir}/lazarus.desktop
-%{_examplesdir}/%{name}
+%{_examplesdir}/%{name}-%{version}
