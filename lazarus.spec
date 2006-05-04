@@ -41,9 +41,9 @@ która jest tak¿e zawarta w tym pakiecie.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/lazarus/docs,%{_pixmapsdir},%{_desktopdir},%{_bindir}} \
-        $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+        $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
-cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}
 
 for i in components doceditor ide lcl units converter debugger ideintf languages localize.bat startlazarus \
 designer images lazarus localize.sh packager tools ; do
