@@ -3,7 +3,7 @@ Summary:	Lazarus Component Library and IDE
 Summary(pl):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	0.9.14
-Release:	0.2
+Release:	0.3
 License:	GPL and modified LGPL
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lazarus/%{name}-%{version}-1.tar.gz
@@ -54,6 +54,7 @@ cp -a docs/*.html $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
 cp -a docs/html $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
 cp -a docs/images $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
 cp -a docs/xml $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
+install docs/Contributors.txt $RPM_BUILD_ROOT%{_datadir}/lazarus/docs
 
 install images/ide_icon48x48.png $RPM_BUILD_ROOT%{_pixmapsdir}/lazarus.png
 install install/lazarus.desktop $RPM_BUILD_ROOT%{_desktopdir}/lazarus.desktop
