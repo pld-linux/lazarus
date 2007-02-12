@@ -1,6 +1,6 @@
 # TODO: optflags (where possible)
 Summary:	Lazarus Component Library and IDE
-Summary(pl):	Lazarus - biblioteka komponentów i IDE
+Summary(pl.UTF-8):   Lazarus - biblioteka komponentÃ³w i IDE
 Name:		lazarus
 Version:	0.9.14
 Release:	0.3
@@ -26,10 +26,10 @@ Lazarus is a free and opensource RAD tool for freepascal using the
 Lazarus Component Library (LCL), which is also included in this
 package.
 
-%description -l pl
-Lazarus to darmowe i opensourcowe narzêdzie RAD dla freepascala,
-u¿ywaj±ce biblioteki komponentów LCL (Lazarus Component Library),
-która jest tak¿e zawarta w tym pakiecie.
+%description -l pl.UTF-8
+Lazarus to darmowe i opensourcowe narzÄ™dzie RAD dla freepascala,
+uÅ¼ywajÄ…ce biblioteki komponentÃ³w LCL (Lazarus Component Library),
+ktÃ³ra jest takÅ¼e zawarta w tym pakiecie.
 
 %prep
 %setup -q -n %{name}
