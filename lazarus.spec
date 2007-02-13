@@ -1,6 +1,6 @@
 # TODO: optflags (where possible)
 Summary:	Lazarus Component Library and IDE
-Summary(pl.UTF-8):   Lazarus - biblioteka komponentów i IDE
+Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	0.9.14
 Release:	0.3
