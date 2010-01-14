@@ -2,20 +2,20 @@
 Summary:	Lazarus Component Library and IDE
 Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
-Version:	0.9.14
-Release:	0.3
+Version:	0.9.28.2
+Release:	0.1
 License:	GPL and modified LGPL
 Group:		Development/Tools
-Source0:	http://dl.sourceforge.net/lazarus/%{name}-%{version}-1.tar.gz
-# Source0-md5:	7ee733185e5f0dc10f6c7084e1505c60
+Source0:	http://dl.sourceforge.net/lazarus/%{name}-%{version}-src.tar.bz2
+# Source0-md5:	52dc157fa1e83e90b5331820bd616d81
 URL:		http://www.lazarus.freepascal.org/
 Patch0:		%{name}-desktop.patch
 # heavily broken: binaries in datadir
 BuildRequires:	FHS-fix
-BuildRequires:	fpc >= 2.0.2
+BuildRequires:	fpc >= 2.4.0
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gtk+-devel
-Requires:	fpc-src >= 2.0.2
+Requires:	fpc-src >= 2.4.0
 Requires:	gdk-pixbuf >= 0.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,7 +36,7 @@ która jest także zawarta w tym pakiecie.
 %patch0 -p1
 
 %build
-%{__make}
+%{__make} -j1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -66,7 +66,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/*.txt docs/*.pdf README
+%doc docs/*.txt docs/*.pdf
 %attr(755,root,root) %{_bindir}/lazarus
 %attr(755,root,root) %{_bindir}/startlazarus
 %{_datadir}/lazarus
