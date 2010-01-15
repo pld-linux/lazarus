@@ -3,7 +3,7 @@ Summary:	Lazarus Component Library and IDE
 Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	0.9.28.2
-Release:	1
+Release:	2
 License:	GPL and modified LGPL
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/lazarus/%{name}-%{version}-src.tar.bz2
@@ -17,7 +17,7 @@ Requires:	fpc-src >= 2.4.0
 Requires:	gdk-pixbuf >= 0.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		lazdir		%{_datadir}/lazarus
+%define		lazdir		%{_libdir}/lazarus
 
 %description
 Lazarus is a free and opensource RAD tool for freepascal using the
@@ -58,7 +58,6 @@ install images/ide_icon48x48.png $RPM_BUILD_ROOT%{_pixmapsdir}/lazarus.png
 install install/lazarus.desktop $RPM_BUILD_ROOT%{_desktopdir}/lazarus.desktop
 ln -sf %{lazdir}/lazarus $RPM_BUILD_ROOT%{_bindir}/lazarus
 ln -sf %{lazdir}/startlazarus $RPM_BUILD_ROOT%{_bindir}/startlazarus
-ln -s %{_libdir}/lazarus $RPM_BUILD_ROOT%{_datadir}/lazarus
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -68,7 +67,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/*.txt docs/*.pdf
 %attr(755,root,root) %{_bindir}/lazarus
 %attr(755,root,root) %{_bindir}/startlazarus
-%{_datadir}/lazarus
 %dir %{_libdir}/lazarus
 %{_libdir}/lazarus/components
 %{_libdir}/lazarus/converter
