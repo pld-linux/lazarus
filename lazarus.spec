@@ -12,7 +12,7 @@ URL:		http://www.lazarus.freepascal.org/
 Patch0:		%{name}-desktop.patch
 BuildRequires:	fpc >= 2.4.0
 BuildRequires:	gdk-pixbuf-devel
-BuildRequires:	gtk+-devel
+BuildRequires:	gtk+2-devel
 Requires:	fpc-src >= 2.4.0
 Requires:	gdk-pixbuf >= 0.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
