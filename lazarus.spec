@@ -3,7 +3,7 @@ Summary:	Lazarus Component Library and IDE
 Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	1.0.2
-Release:	1
+Release:	2
 License:	GPL and modified LGPL
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/lazarus/%{name}-%{version}-0.tar.gz
@@ -17,6 +17,9 @@ BuildRequires:	gtk+2-devel
 Requires:	fpc-src >= 2.4.0
 Requires:	gdk-pixbuf >= 0.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# Stabs debuginfo not supported
+%define		_enable_debug_packages	0
 
 %define		lazdir		%{_libdir}/lazarus
 
