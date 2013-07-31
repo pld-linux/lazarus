@@ -2,12 +2,12 @@
 Summary:	Lazarus Component Library and IDE
 Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
-Version:	1.0.2
-Release:	2
+Version:	1.0.10
+Release:	1
 License:	GPL and modified LGPL
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/lazarus/%{name}-%{version}-0.tar.gz
-# Source0-md5:	738ee29686de71cd599b468eabf034e8
+# Source0-md5:	60d3b297079ca4151f690245295a8708
 URL:		http://www.lazarus.freepascal.org/
 Patch0:		%{name}-desktop.patch
 BuildRequires:	fpc >= 2.4.0
