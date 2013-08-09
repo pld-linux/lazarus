@@ -4,12 +4,12 @@ Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	1.0.10
 Release:	1
-License:	GPL and modified LGPL
+License:	GPL v2, modified LGPL, MPL (see COPYING.txt)
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/lazarus/%{name}-%{version}-0.tar.gz
 # Source0-md5:	60d3b297079ca4151f690245295a8708
-URL:		http://www.lazarus.freepascal.org/
 Patch0:		%{name}-desktop.patch
+URL:		http://www.lazarus.freepascal.org/
 BuildRequires:	fpc >= 2.4.0
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gtk+2-devel
@@ -29,9 +29,9 @@ Lazarus Component Library (LCL), which is also included in this
 package.
 
 %description -l pl.UTF-8
-Lazarus to darmowe i opensourcowe narzędzie RAD dla freepascala,
-używające biblioteki komponentów LCL (Lazarus Component Library),
-która jest także zawarta w tym pakiecie.
+Lazarus to wolnodostępne i mające otwarte źródła narzędzie RAD dla
+freepascala, wykorzystujące bibliotekę komponentów LCL (Lazarus
+Component Library), która jest także zawarta w tym pakiecie.
 
 %prep
 %setup -q -n %{name}
@@ -68,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc docs/*.txt docs/*.pdf
+%doc COPYING.txt COPYING.modifiedLGPL.txt docs/*.txt docs/*.pdf
 %attr(755,root,root) %{_bindir}/lazarus
 %attr(755,root,root) %{_bindir}/startlazarus
 %dir %{_libdir}/lazarus
