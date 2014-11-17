@@ -47,9 +47,9 @@ install -d $RPM_BUILD_ROOT{%{_datadir},%{_libdir}/lazarus/docs,%{_pixmapsdir},%{
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-for i in components doceditor ide lcl units converter debugger ideintf languages localize.bat startlazarus \
-designer images lazarus localize.sh packager tools ; do
-cp -a $i $RPM_BUILD_ROOT%{_libdir}/lazarus
+for i in components doceditor ide lcl units converter debugger languages startlazarus \
+		designer images lazarus packager tools ; do
+	cp -a $i $RPM_BUILD_ROOT%{_libdir}/lazarus
 done
 
 cp -a docs/*.html $RPM_BUILD_ROOT%{_libdir}/lazarus/docs
@@ -79,7 +79,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lazarus/doceditor
 %{_libdir}/lazarus/docs
 %{_libdir}/lazarus/ide
-%{_libdir}/lazarus/ideintf
 %{_libdir}/lazarus/images
 %{_libdir}/lazarus/languages
 %{_libdir}/lazarus/lcl
