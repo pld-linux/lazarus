@@ -2,19 +2,19 @@
 Summary:	Lazarus Component Library and IDE
 Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
-Version:	1.2.6
+Version:	1.6.0
 Release:	1
 License:	GPL v2, modified LGPL, MPL (see COPYING.txt)
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/lazarus/%{name}-%{version}-0.tar.gz
-# Source0-md5:	caa1ee35266ea5e930af064e7efb550c
+# Source0-md5:	1857ee87efa9cb0fdecf8e414f4794ca
 Patch0:		%{name}-desktop.patch
 URL:		http://www.lazarus.freepascal.org/
-BuildRequires:	fpc >= 2.4.0
+BuildRequires:	fpc >= 3.0.0
 BuildRequires:	gdk-pixbuf-devel
 BuildRequires:	gtk+2-devel
 %requires_eq	fpc
-Requires:	fpc-src >= 2.4.0
+Requires:	fpc-src >= 3.0.0
 Requires:	gdk-pixbuf >= 0.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,7 +48,7 @@ install -d $RPM_BUILD_ROOT{%{_datadir},%{_libdir}/lazarus/docs,%{_pixmapsdir},%{
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 for i in components doceditor ide lcl units converter debugger languages startlazarus \
-		designer images lazarus packager tools ; do
+		designer images lazarus lazbuild packager tools ; do
 	cp -a $i $RPM_BUILD_ROOT%{_libdir}/lazarus
 done
 
@@ -61,6 +61,7 @@ install docs/Contributors.txt $RPM_BUILD_ROOT%{_libdir}/lazarus/docs
 install images/ide_icon48x48.png $RPM_BUILD_ROOT%{_pixmapsdir}/lazarus.png
 install install/lazarus.desktop $RPM_BUILD_ROOT%{_desktopdir}/lazarus.desktop
 ln -sf %{lazdir}/lazarus $RPM_BUILD_ROOT%{_bindir}/lazarus
+ln -sf %{lazdir}/lazarus $RPM_BUILD_ROOT%{_bindir}/lazbuild
 ln -sf %{lazdir}/startlazarus $RPM_BUILD_ROOT%{_bindir}/startlazarus
 
 %clean
@@ -70,6 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING.txt COPYING.modifiedLGPL.txt docs/*.txt docs/*.pdf
 %attr(755,root,root) %{_bindir}/lazarus
+%attr(755,root,root) %{_bindir}/lazbuild
 %attr(755,root,root) %{_bindir}/startlazarus
 %dir %{_libdir}/lazarus
 %{_libdir}/lazarus/components
@@ -86,6 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lazarus/tools
 %{_libdir}/lazarus/units
 %attr(755,root,root) %{_libdir}/lazarus/lazarus
+%attr(755,root,root) %{_libdir}/lazarus/lazbuild
 %attr(755,root,root) %{_libdir}/lazarus/startlazarus
 %{_pixmapsdir}/lazarus.png
 %{_desktopdir}/lazarus.desktop

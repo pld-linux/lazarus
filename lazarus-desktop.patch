@@ -1,6 +1,6 @@
 --- lazarus/install/lazarus.desktop~	2008-11-23 22:33:35.000000000 +0100
 +++ lazarus/install/lazarus.desktop	2010-01-14 22:08:47.235416252 +0100
-@@ -6,11 +6,12 @@
+@@ -6,12 +6,13 @@
  Terminal=false
  Type=Application
  Icon=lazarus.png
@@ -8,6 +8,7 @@
 +Categories=Development;IDE;
  StartupWMClass=Lazarus
  MimeType=text/x-pascal;text/lazarus-project-source;text/lazarus-project-information;text/lazarus-form;text/lazarus-resource;text/lazarus-package;text/lazarus-package-link;text/lazarus-code-inlay;
+ Keywords=editor;Pascal;IDE;FreePascal;fpc;Design;Designer;
  [Property::X-KDE-NativeExtension]
  Type=QString
  Value=.pas
