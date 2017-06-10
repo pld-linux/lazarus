@@ -3,7 +3,7 @@ Summary:	Lazarus Component Library and IDE
 Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	1.6.0
-Release:	1
+Release:	2
 License:	GPL v2, modified LGPL, MPL (see COPYING.txt)
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/lazarus/%{name}-%{version}-0.tar.gz
