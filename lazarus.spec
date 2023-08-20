@@ -13,6 +13,7 @@ Patch1:		deprecated-unit.patch
 Patch2:		libdir.patch
 URL:		http://www.lazarus.freepascal.org/
 BuildRequires:	fpc >= 3.2.0
+BuildRequires:	fpc-src >= 3.2.0
 BuildRequires:	gtk+3-devel
 %requires_eq	fpc
 Requires:	fpc-src >= 3.2.0
