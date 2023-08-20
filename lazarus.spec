@@ -90,7 +90,7 @@ fpcmake -Tall
 cd ../
 
 # Enable GDB debuginfo in DWARF format, plus some optimisations
-%{__make} -j1 LCL_PLATFORM=gtk3 OPT="-g -gl -gw -O3"
+%{__make} -j1 LCL_PLATFORM=gtk3 OPT="-k--build-id -g -gl -gw -O3"
 
 %install
 rm -rf $RPM_BUILD_ROOT
