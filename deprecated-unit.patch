@@ -1,0 +1,376 @@
+--- lazarus/lcl/interfaces/gtk3/gtk3boxes.pas~	2022-09-25 12:37:18.000000000 +0200
++++ lazarus/lcl/interfaces/gtk3/gtk3boxes.pas	2022-12-21 18:46:07.163316917 +0100
+@@ -1,11 +1,13 @@
+ unit gtk3boxes;
+ 
++{$MODE OBJFPC} {$LONGSTRINGS ON}
++
+ interface
+ 
+ uses
+   // LazUtils
+-  UITypes,
++  System.UITypes,
+   // LCL
+   LCLType, LCLStrConsts,LCLProc, InterfaceBase,
+   LazGtk3, LazGLib2, LazGObject2, LazGdk3, gtk3objects;
+ 
+--- lazarus/components/lazutils/lazutils.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/lazutils/lazutils.pas	2023-08-20 14:35:52.118267306 +0200
+@@ -20,7 +20,7 @@
+   LazUTF16, LazUTF8, LazUTF8Classes, LazUTF8SysUtils, LazUtilities, 
+   LazUtilsStrConsts, LazVersion, LConvEncoding, lcsvutils, LookupStringList, 
+   Maps, Masks, ObjectLists, StringHashList, TextStrings, Translations, 
+-  UITypes, UTF8Process, LazarusPackageIntf;
++  System.UITypes, UTF8Process, LazarusPackageIntf;
+ 
+ implementation
+ 
+--- lazarus/lcl/controls.pp~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/lcl/controls.pp	2023-08-20 14:39:15.438847651 +0200
+@@ -42,7 +42,7 @@
+   LCLStrConsts, LCLType, LCLProc, Graphics, LMessages, LCLIntf, InterfaceBase,
+   ImgList, PropertyStorage, Menus, ActnList, LCLClasses, LResources, LCLPlatformDef,
+   // LazUtils
+-  GraphType, UITypes, LazMethodList, LazLoggerBase, LazTracer, LazUtilities;
++  GraphType, System.UITypes, LazMethodList, LazLoggerBase, LazTracer, LazUtilities;
+ 
+ {$I controlconsts.inc}
+ 
+@@ -48,22 +48,22 @@
+ 
+ const
+   // Used for ModalResult
+-  mrNone    = UITypes.mrNone;
+-  mrOK      = UITypes.mrOK;
+-  mrCancel  = UITypes.mrCancel;
+-  mrAbort   = UITypes.mrAbort;
+-  mrRetry   = UITypes.mrRetry;
+-  mrIgnore  = UITypes.mrIgnore;
+-  mrYes     = UITypes.mrYes;
+-  mrNo      = UITypes.mrNo;
+-  mrAll     = UITypes.mrAll;
+-  mrNoToAll = UITypes.mrNoToAll;
+-  mrYesToAll= UITypes.mrYesToAll;
+-  mrClose   = UITypes.mrClose;
+-  mrLast    = UITypes.mrLast;
++  mrNone    = System.UITypes.mrNone;
++  mrOK      = System.UITypes.mrOK;
++  mrCancel  = System.UITypes.mrCancel;
++  mrAbort   = System.UITypes.mrAbort;
++  mrRetry   = System.UITypes.mrRetry;
++  mrIgnore  = System.UITypes.mrIgnore;
++  mrYes     = System.UITypes.mrYes;
++  mrNo      = System.UITypes.mrNo;
++  mrAll     = System.UITypes.mrAll;
++  mrNoToAll = System.UITypes.mrNoToAll;
++  mrYesToAll= System.UITypes.mrYesToAll;
++  mrClose   = System.UITypes.mrClose;
++  mrLast    = System.UITypes.mrLast;
+ 
+ function GetModalResultStr(ModalResult: TModalResult): ShortString;
+-  deprecated 'Use the ModalResultStr array from unit UITypes directly.';
++  deprecated 'Use the ModalResultStr array from unit System.UITypes directly.';
+ property ModalResultStr[ModalResult: TModalResult]: shortstring read GetModalResultStr;
+ 
+ const
+@@ -3047,7 +3047,7 @@
+ 
+ function GetModalResultStr(ModalResult: TModalResult): ShortString;
+ begin
+-  Result := UITypes.ModalResultStr[ModalResult];
++  Result := System.UITypes.ModalResultStr[ModalResult];
+ end;
+ 
+ {------------------------------------------------------------------------------
+--- lazarus/lcl/forms.pp~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/lcl/forms.pp	2023-08-20 14:40:56.355815258 +0200
+@@ -40,7 +40,7 @@
+   ClipBrd, HelpIntfs, Controls, ImgList, Themes,
+   // LazUtils
+   LazFileUtils, LazUTF8, Maps, IntegerList, LazMethodList, LazLoggerBase,
+-  LazUtilities, GraphType, UITypes
++  LazUtilities, GraphType, System.UITypes
+   {$ifndef wince},gettext{$endif}// remove ifdefs when gettext is fixed and a new fpc is released
+   ;
+ 
+@@ -421,8 +421,8 @@
+     );
+   TFormState = set of TFormStateType;
+ 
+-  TModalResult = UITypes.TModalResult;
+-  PModalResult = ^UITypes.TModalResult;
++  TModalResult = System.UITypes.TModalResult;
++  PModalResult = ^System.UITypes.TModalResult;
+ 
+   TFormHandlerType = (
+     fhtFirstShow,
+--- lazarus/lcl/dialogs.pp~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/lcl/dialogs.pp	2023-08-20 14:41:48.209305836 +0200
+@@ -28,34 +28,34 @@
+   Forms, Controls, Themes, Graphics, Buttons, ButtonPanel, StdCtrls,
+   ExtCtrls, LCLClasses, ClipBrd, Menus, LCLTaskDialog,
+   // LazUtils
+-  GraphType, UITypes, FileUtil, LazFileUtils, LazStringUtils, LazLoggerBase;
++  GraphType, System.UITypes, FileUtil, LazFileUtils, LazStringUtils, LazLoggerBase;
+ 
+ type
+-  // Aliases for types in UITypes.
+-  TMsgDlgType    = UITypes.TMsgDlgType;
+-  TMsgDlgBtn     = UITypes.TMsgDlgBtn;
+-  TMsgDlgButtons = UITypes.TMsgDlgButtons;
++  // Aliases for types in System.UITypes.
++  TMsgDlgType    = System.UITypes.TMsgDlgType;
++  TMsgDlgBtn     = System.UITypes.TMsgDlgBtn;
++  TMsgDlgButtons = System.UITypes.TMsgDlgButtons;
+ 
+ const
+-  // Aliases for enum values in UITypes.
+-  mtWarning      = UITypes.TMsgDlgType.mtWarning;
+-  mtError        = UITypes.TMsgDlgType.mtError;
+-  mtInformation  = UITypes.TMsgDlgType.mtInformation;
+-  mtConfirmation = UITypes.TMsgDlgType.mtConfirmation;
+-  mtCustom       = UITypes.TMsgDlgType.mtCustom;
++  // Aliases for enum values in System.UITypes.
++  mtWarning      = System.UITypes.TMsgDlgType.mtWarning;
++  mtError        = System.UITypes.TMsgDlgType.mtError;
++  mtInformation  = System.UITypes.TMsgDlgType.mtInformation;
++  mtConfirmation = System.UITypes.TMsgDlgType.mtConfirmation;
++  mtCustom       = System.UITypes.TMsgDlgType.mtCustom;
+ 
+-  mbYes      = UITypes.TMsgDlgBtn.mbYes;
+-  mbNo       = UITypes.TMsgDlgBtn.mbNo;
+-  mbOK       = UITypes.TMsgDlgBtn.mbOK;
+-  mbCancel   = UITypes.TMsgDlgBtn.mbCancel;
+-  mbAbort    = UITypes.TMsgDlgBtn.mbAbort;
+-  mbRetry    = UITypes.TMsgDlgBtn.mbRetry;
+-  mbIgnore   = UITypes.TMsgDlgBtn.mbIgnore;
+-  mbAll      = UITypes.TMsgDlgBtn.mbAll;
+-  mbNoToAll  = UITypes.TMsgDlgBtn.mbNoToAll;
+-  mbYesToAll = UITypes.TMsgDlgBtn.mbYesToAll;
+-  mbHelp     = UITypes.TMsgDlgBtn.mbHelp;
+-  mbClose    = UITypes.TMsgDlgBtn.mbClose;
++  mbYes      = System.UITypes.TMsgDlgBtn.mbYes;
++  mbNo       = System.UITypes.TMsgDlgBtn.mbNo;
++  mbOK       = System.UITypes.TMsgDlgBtn.mbOK;
++  mbCancel   = System.UITypes.TMsgDlgBtn.mbCancel;
++  mbAbort    = System.UITypes.TMsgDlgBtn.mbAbort;
++  mbRetry    = System.UITypes.TMsgDlgBtn.mbRetry;
++  mbIgnore   = System.UITypes.TMsgDlgBtn.mbIgnore;
++  mbAll      = System.UITypes.TMsgDlgBtn.mbAll;
++  mbNoToAll  = System.UITypes.TMsgDlgBtn.mbNoToAll;
++  mbYesToAll = System.UITypes.TMsgDlgBtn.mbYesToAll;
++  mbHelp     = System.UITypes.TMsgDlgBtn.mbHelp;
++  mbClose    = System.UITypes.TMsgDlgBtn.mbClose;
+ 
+   // Combinations of buttons.
+   mbYesNoCancel = [mbYes, mbNo, mbCancel];
+--- lazarus/components/buildintf/packageintf.pas~	2023-03-04 14:24:23.000000000 +0100
++++ lazarus/components/buildintf/packageintf.pas	2023-08-20 14:42:44.599478598 +0200
+@@ -18,7 +18,7 @@
+ uses
+   Classes, SysUtils, contnrs,
+   // LazUtils
+-  LazConfigStorage, LazMethodList, LazLoggerBase, UITypes,
++  LazConfigStorage, LazMethodList, LazLoggerBase, System.UITypes,
+   // BuildIntf
+   NewItemIntf, ProjPackIntf, PackageDependencyIntf, IDEOptionsIntf;
+   
+--- lazarus/components/buildintf/lazmsgworker.pas~	2023-03-04 14:24:23.000000000 +0100
++++ lazarus/components/buildintf/lazmsgworker.pas	2023-08-20 14:43:18.346249440 +0200
+@@ -6,7 +6,7 @@
+ 
+ uses
+   // LazUtils
+-  UITypes;
++  System.UITypes;
+ 
+ type
+   TLazMessageWorker = function(const aCaption, aMsg: string;
+--- lazarus/components/buildintf/packagelinkintf.pas~	2023-03-04 14:24:23.000000000 +0100
++++ lazarus/components/buildintf/packagelinkintf.pas	2023-08-20 14:44:04.903060679 +0200
+@@ -7,7 +7,7 @@
+ uses
+   SysUtils, Classes,
+   // LazUtils
+-  LazFileUtils, UITypes,
++  LazFileUtils, System.UITypes,
+   // BuildIntf
+   PackageDependencyIntf, PackageIntf;
+ 
+--- lazarus/components/buildintf/projectintf.pas~	2023-03-04 14:24:23.000000000 +0100
++++ lazarus/components/buildintf/projectintf.pas	2023-08-20 14:44:33.739817399 +0200
+@@ -18,7 +18,7 @@
+ uses
+   Classes, SysUtils, Contnrs,
+   // LazUtils
+-  FileUtil, LazFileUtils, LazFileCache, LazMethodList, UITypes, AvgLvlTree,
++  FileUtil, LazFileUtils, LazFileCache, LazMethodList, System.UITypes, AvgLvlTree,
+   // BuildIntf
+   IDEOptionsIntf, NewItemIntf, ProjPackIntf, CompOptsIntf, BuildStrConsts;
+ 
+--- lazarus/components/ideintf/lazideintf.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/lazideintf.pas	2023-08-20 14:45:03.926578664 +0200
+@@ -20,7 +20,7 @@
+   // LCL
+   Forms, Controls, LazHelpHTML,
+   // LazUtils
+-  UITypes, LazMethodList,
++  System.UITypes, LazMethodList,
+   // BuildIntf
+   BaseIDEIntf, IDEOptionsIntf, CompOptsIntf, ProjectIntf, IDEExternToolIntf,
+   // IdeIntf
+--- lazarus/components/ideintf/propedits.pp~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/propedits.pp	2023-08-20 14:45:33.133337177 +0200
+@@ -32,7 +32,7 @@
+   {$IFnDEF UseOINormalCheckBox} CheckBoxThemed, {$ENDIF}
+   // LazUtils
+   FileUtil, StringHashList, LazMethodList, LazLoggerBase, LazUtilities, LazStringUtils,
+-  GraphType, UITypes, FPCAdds, // for StrToQWord in older fpc versions
++  GraphType, System.UITypes, FPCAdds, // for StrToQWord in older fpc versions
+   // IdeIntf
+   ObjInspStrConsts, PropEditUtils,
+   // Forms with .lfm files
+--- lazarus/components/ideintf/texttools.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/texttools.pas	2023-08-20 14:45:56.766745083 +0200
+@@ -18,7 +18,7 @@
+ uses
+   Classes, SysUtils,
+   // LazUtils
+-  UITypes;
++  System.UITypes;
+ 
+   { Sorting }
+ type
+--- lazarus/components/ideintf/idedialogs.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/idedialogs.pas	2023-08-20 14:46:29.640182417 +0200
+@@ -21,7 +21,7 @@
+   // LCL
+   Dialogs,
+   // LazUtils
+-  UITypes, LazFileCache,
++  System.UITypes, LazFileCache,
+   // BuildIntf
+   LazMsgWorker;
+ 
+--- lazarus/components/ideintf/unitresources.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/unitresources.pas	2023-08-20 14:46:53.290257490 +0200
+@@ -23,7 +23,7 @@
+   // LCL
+   LCLMemManager, Forms, LResources,
+   // LazUtils
+-  UITypes;
++  System.UITypes;
+ 
+ type
+ 
+--- lazarus/components/ideintf/dbgridcolumnspropeditform.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/dbgridcolumnspropeditform.pas	2023-08-20 14:47:20.813678406 +0200
+@@ -9,7 +9,7 @@
+   // LCL
+   LCLType, Dialogs, Forms, ComCtrls, StdCtrls, ActnList, DBGrids,
+   // LazUtils
+-  UITypes, LazLoggerBase,
++  System.UITypes, LazLoggerBase,
+   // IdeIntf
+   ObjInspStrConsts, IDEImagesIntf, PropEdits, PropEditUtils;
+ 
+--- lazarus/components/ideintf/graphpropedits.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/graphpropedits.pas	2023-08-20 14:47:50.880440984 +0200
+@@ -20,7 +20,7 @@
+   // LCL
+   LCLIntf, LCLType, Forms, Graphics, Buttons, Menus, Dialogs, Grids, ImgList, EditBtn,
+   // LazUtils
+-  GraphType, UITypes, LazFileUtils,
++  GraphType, System.UITypes, LazFileUtils,
+   // IdeIntf
+   PropEdits, GraphicPropEdit; // defines TGraphicPropertyEditorForm
+ 
+--- lazarus/components/ideintf/idetextconverter.pas~	2023-03-04 14:24:24.000000000 +0100
++++ lazarus/components/ideintf/idetextconverter.pas	2023-08-20 15:02:06.476570331 +0200
+@@ -25,7 +25,7 @@
+   // LCL
+   LCLProc,
+   // LazUtils
+-  UITypes, FileUtil, LazFileUtils, LazUTF8, LazLoggerBase,
++  System.UITypes, FileUtil, LazFileUtils, LazUTF8, LazLoggerBase,
+   // IdeIntf
+   SrcEditorIntf, PropEdits, ObjInspStrConsts;
+   
+--- lazarus/ide/lazbuild.lpr~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/ide/lazbuild.lpr	2023-08-20 18:08:54.531207411 +0200
+@@ -32,7 +32,7 @@
+   Interfaces, // this includes the NoGUI widgetset
+   // LazUtils
+   Masks, LConvEncoding, FileUtil, LazFileUtils, LazLoggerBase, LazUtilities,
+-  LazUTF8, Laz2_XMLCfg, UITypes, LazStringUtils,
++  LazUTF8, Laz2_XMLCfg, System.UITypes, LazStringUtils,
+   // LCL
+   LCLPlatformDef, Forms,
+   // Codetools
+--- lazarus/ide/exttools.pas~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/ide/exttools.pas	2023-08-20 18:09:30.484662629 +0200
+@@ -38,7 +38,7 @@
+   Classes, SysUtils, math, process, Pipes, Laz_AVL_Tree,
+   // LazUtils
+   FileUtil, LazFileUtils, LazUtilities, LazLoggerBase, UTF8Process, LazUTF8,
+-  UITypes, AvgLvlTree,
++  System.UITypes, AvgLvlTree,
+   // BuildIntf
+   IDEExternToolIntf, BaseIDEIntf, MacroIntf, LazMsgWorker,
+   // IDE
+--- lazarus/packager/packagedefs.pas~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/packager/packagedefs.pas	2023-08-20 18:10:00.878222128 +0200
+@@ -46,7 +46,7 @@
+   CodeCache, CodeToolsCfgScript, CodeToolsStructs,
+   // LazUtils
+   FileUtil, LazFileUtils, LazUtilities, LazFileCache, LazUTF8, FileReferenceList,
+-  LazTracer, LazLoggerBase, UITypes, Laz2_XMLCfg, AvgLvlTree,
++  LazTracer, LazLoggerBase, System.UITypes, Laz2_XMLCfg, AvgLvlTree,
+   // BuildIntf
+   MacroIntf, MacroDefIntf, IDEOptionsIntf, PublishModuleIntf,
+   PackageDependencyIntf, PackageIntf, FppkgIntf,
+--- lazarus/ide/buildmodesmanager.pas~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/ide/buildmodesmanager.pas	2023-08-20 18:12:01.309201711 +0200
+@@ -35,7 +35,7 @@
+   // LCL
+   Forms, Controls, Dialogs, StdCtrls, Grids, Menus, ComCtrls, ButtonPanel, LCLProc,
+   // LazUtils
+-  LazFileUtils, LazLoggerBase, UITypes,
++  LazFileUtils, LazLoggerBase, System.UITypes,
+   // IdeIntf
+   IDEDialogs, CompOptsIntf, IDEOptionsIntf, LazIDEIntf, IDEImagesIntf,
+   // IDE
+--- lazarus/ide/publishmoduledlg.pas~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/ide/publishmoduledlg.pas	2023-08-20 18:12:41.982840412 +0200
+@@ -36,7 +36,7 @@
+   // LCL
+   LCLType, Forms, StdCtrls, Dialogs, Buttons, ButtonPanel, LCLIntf,
+   // LazUtils
+-  FileUtil, LazFileUtils, LazStringUtils, LazLoggerBase, UITypes, LazUTF8,
++  FileUtil, LazFileUtils, LazStringUtils, LazLoggerBase, System.UITypes, LazUTF8,
+   // BuildIntf
+   ProjPackIntf, CompOptsIntf, PublishModuleIntf,
+   // IdeIntf
+--- lazarus/packager/projpackchecks.pas~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/packager/projpackchecks.pas	2023-08-20 18:13:32.746539176 +0200
+@@ -9,7 +9,7 @@
+   // LCL
+   LCLProc, Forms, Dialogs,
+   // LazUtils
+-  FileUtil, LazFileUtils, UITypes,
++  FileUtil, LazFileUtils, System.UITypes,
+   // Codetools
+   CodeToolManager, CodeCache,
+   // BuildIntf
+--- lazarus/ide/diskdiffsdialog.pas~	2023-03-04 14:24:25.000000000 +0100
++++ lazarus/ide/diskdiffsdialog.pas	2023-08-20 18:14:29.530262496 +0200
+@@ -35,7 +35,7 @@
+   // CodeTools
+   FileProcs, CodeCache,
+   // LazUtils
+-  LazFileUtils, UITypes,
++  LazFileUtils, System.UITypes,
+   // IdeIntf
+   IDEImagesIntf,
+   // SynEdit
