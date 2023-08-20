@@ -2,7 +2,7 @@ Summary:	Lazarus Component Library and IDE
 Summary(pl.UTF-8):	Lazarus - biblioteka komponentów i IDE
 Name:		lazarus
 Version:	2.2.6
-Release:	1
+Release:	2
 License:	GPL v2, modified LGPL, MPL (see COPYING.txt)
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/lazarus/%{name}-%{version}-0.tar.gz
@@ -14,7 +14,7 @@ Patch2:		libdir.patch
 URL:		http://www.lazarus.freepascal.org/
 BuildRequires:	fpc >= 3.2.0
 BuildRequires:	fpc-src >= 3.2.0
-BuildRequires:	gtk+3-devel
+BuildRequires:	gtk+2-devel
 %requires_eq	fpc
 Requires:	fpc-src >= 3.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -91,7 +91,7 @@ fpcmake -Tall
 cd ../
 
 # Enable GDB debuginfo in DWARF format, plus some optimisations
-%{__make} -j1 LCL_PLATFORM=gtk3 OPT="-k--build-id -g -gl -gw -O3"
+%{__make} -j1 LCL_PLATFORM=gtk2 OPT="-k--build-id -g -gl -gw -O3"
 
 %install
 rm -rf $RPM_BUILD_ROOT
